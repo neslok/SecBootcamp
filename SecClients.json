@@ -1,0 +1,1192 @@
+{
+  "status" : {},
+  "contains_secrets" : true,
+  "product_version" : "3.1.1",
+  "spec" : {
+    "description" : "",
+    "resources" : {
+      "client_attrs" : {
+        "66b5c322_deployment" : {
+          "y" : 363,
+          "x" : 509.75
+        },
+        "d84a47b3_deployment" : {
+          "y" : 482,
+          "x" : 527.75
+        },
+        "accdb2ec_deployment" : {
+          "y" : 363.5,
+          "x" : 612
+        }
+      },
+      "service_definition_list" : [
+        {
+          "singleton" : false,
+          "action_list" : [
+            {
+              "description" : "System action for creating an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "WinTools"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "cc474947_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "7ac313c6_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "cc474947_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_create"
+            },
+            {
+              "description" : "System action for deleting an application. Deletes created VMs as well",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "WinTools"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "70f56108_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "d1fad694_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "70f56108_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_delete"
+            },
+            {
+              "description" : "System action for starting an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "WinTools"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "12eb8797_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "fe6403cb_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "12eb8797_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_start"
+            },
+            {
+              "description" : "System action for stopping an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "WinTools"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "18fd512e_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "838152cd_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "18fd512e_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_stop"
+            },
+            {
+              "description" : "System action for restarting an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "WinTools"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "58b9024d_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "e147ebf4_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "58b9024d_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_restart"
+            }
+          ],
+          "depends_on_list" : [],
+          "name" : "WinTools",
+          "port_list" : [],
+          "tier" : "",
+          "variable_list" : [],
+          "description" : ""
+        },
+        {
+          "singleton" : false,
+          "action_list" : [
+            {
+              "description" : "System action for creating an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient1"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "182a5aea_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "af3e59ad_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "182a5aea_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_create"
+            },
+            {
+              "description" : "System action for deleting an application. Deletes created VMs as well",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient1"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "a202a0f5_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "716ec9f1_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "a202a0f5_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_delete"
+            },
+            {
+              "description" : "System action for starting an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient1"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "e3ecae2d_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "6688f966_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "e3ecae2d_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_start"
+            },
+            {
+              "description" : "System action for stopping an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient1"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "0ecffd30_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "a5f7fb54_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "0ecffd30_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_stop"
+            },
+            {
+              "description" : "System action for restarting an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient1"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "56496f5d_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "56bf448e_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "56496f5d_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_restart"
+            }
+          ],
+          "depends_on_list" : [],
+          "name" : "VDIClient1",
+          "port_list" : [],
+          "tier" : "",
+          "variable_list" : [],
+          "description" : ""
+        },
+        {
+          "singleton" : false,
+          "action_list" : [
+            {
+              "description" : "System action for creating an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient2"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "3be72d2b_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "7b15717f_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "3be72d2b_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_create"
+            },
+            {
+              "description" : "System action for deleting an application. Deletes created VMs as well",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient2"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "82e51c65_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "6722d9fc_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "82e51c65_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_delete"
+            },
+            {
+              "description" : "System action for starting an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient2"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "499fb2f9_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "10277435_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "499fb2f9_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_start"
+            },
+            {
+              "description" : "System action for stopping an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient2"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "e5a5a2b3_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "c9474b8c_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "e5a5a2b3_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_stop"
+            },
+            {
+              "description" : "System action for restarting an application",
+              "type" : "system",
+              "critical" : false,
+              "runbook" : {
+                "task_definition_list" : [
+                  {
+                    "target_any_local_reference" : {
+                      "kind" : "app_service",
+                      "name" : "VDIClient2"
+                    },
+                    "retries" : "0",
+                    "description" : "",
+                    "child_tasks_local_reference_list" : [],
+                    "name" : "61bdb346_dag",
+                    "attrs" : {
+                      "edges" : [],
+                      "type" : ""
+                    },
+                    "timeout_secs" : "0",
+                    "type" : "DAG",
+                    "variable_list" : []
+                  }
+                ],
+                "description" : "",
+                "name" : "96999f9f_runbook",
+                "main_task_local_reference" : {
+                  "kind" : "app_task",
+                  "name" : "61bdb346_dag"
+                },
+                "variable_list" : []
+              },
+              "name" : "action_restart"
+            }
+          ],
+          "depends_on_list" : [],
+          "name" : "VDIClient2",
+          "port_list" : [],
+          "tier" : "",
+          "variable_list" : [],
+          "description" : ""
+        }
+      ],
+      "substrate_definition_list" : [
+        {
+          "description" : "",
+          "action_list" : [],
+          "type" : "AHV_VM",
+          "name" : "VM1",
+          "readiness_probe" : {
+            "connection_type" : "POWERSHELL",
+            "retries" : "5",
+            "connection_protocol" : "http",
+            "connection_port" : 5985,
+            "address" : "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
+            "delay_secs" : "60",
+            "disable_readiness_probe" : true
+          },
+          "editables" : {
+            "create_spec" : {
+              "resources" : {
+                "nic_list" : {},
+                "serial_port_list" : {}
+              }
+            }
+          },
+          "os_type" : "Windows",
+          "create_spec" : {
+            "name" : "WinToolsVM",
+            "resources" : {
+              "nic_list" : [
+                {
+                  "nic_type" : "NORMAL_NIC",
+                  "ip_endpoint_list" : [],
+                  "network_function_chain_reference" : null,
+                  "network_function_nic_type" : "INGRESS",
+                  "mac_address" : "",
+                  "subnet_reference" : {
+                    "kind" : "subnet",
+                    "type" : "",
+                    "name" : "",
+                    "uuid" : "2e83db8c-789f-4288-a5dd-ce94eeb16abb"
+                  },
+                  "type" : ""
+                }
+              ],
+              "serial_port_list" : [],
+              "guest_tools" : null,
+              "num_vcpus_per_socket" : 1,
+              "num_sockets" : 2,
+              "gpu_list" : [],
+              "memory_size_mib" : 4096,
+              "parent_reference" : null,
+              "hardware_clock_timezone" : "",
+              "guest_customization" : null,
+              "power_state" : "ON",
+              "type" : "",
+              "account_uuid" : "3cda6d9e-ad20-4954-80eb-712ed2022ce4",
+              "boot_config" : {
+                "boot_device" : {
+                  "type" : "",
+                  "disk_address" : {
+                    "type" : "",
+                    "device_index" : 0,
+                    "adapter_type" : "SCSI"
+                  }
+                },
+                "type" : "",
+                "boot_type" : "",
+                "mac_address" : ""
+              },
+              "disk_list" : [
+                {
+                  "data_source_reference" : {
+                    "kind" : "image",
+                    "type" : "",
+                    "name" : "WinToolsVM.qcow2",
+                    "uuid" : "da46c14f-b113-42df-be79-6d82ee788dda"
+                  },
+                  "type" : "",
+                  "disk_size_mib" : 0,
+                  "volume_group_reference" : null,
+                  "device_properties" : {
+                    "type" : "",
+                    "disk_address" : {
+                      "type" : "",
+                      "device_index" : 0,
+                      "adapter_type" : "SCSI"
+                    },
+                    "device_type" : "DISK"
+                  }
+                }
+              ]
+            },
+            "availability_zone_reference" : null,
+            "backup_policy" : null,
+            "type" : "",
+            "cluster_reference" : null,
+            "categories" : ""
+          },
+          "variable_list" : []
+        },
+        {
+          "description" : "",
+          "action_list" : [],
+          "type" : "AHV_VM",
+          "name" : "VM2",
+          "readiness_probe" : {
+            "connection_type" : "POWERSHELL",
+            "retries" : "5",
+            "connection_protocol" : "http",
+            "connection_port" : 5985,
+            "address" : "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
+            "delay_secs" : "60",
+            "disable_readiness_probe" : true
+          },
+          "editables" : {
+            "create_spec" : {
+              "resources" : {
+                "nic_list" : {},
+                "serial_port_list" : {}
+              }
+            }
+          },
+          "os_type" : "Windows",
+          "create_spec" : {
+            "name" : "VDIClient1",
+            "resources" : {
+              "nic_list" : [
+                {
+                  "nic_type" : "NORMAL_NIC",
+                  "ip_endpoint_list" : [],
+                  "network_function_chain_reference" : null,
+                  "network_function_nic_type" : "INGRESS",
+                  "mac_address" : "",
+                  "subnet_reference" : {
+                    "kind" : "subnet",
+                    "type" : "",
+                    "name" : "",
+                    "uuid" : "2e83db8c-789f-4288-a5dd-ce94eeb16abb"
+                  },
+                  "type" : ""
+                }
+              ],
+              "serial_port_list" : [],
+              "guest_tools" : null,
+              "num_vcpus_per_socket" : 1,
+              "num_sockets" : 2,
+              "gpu_list" : [],
+              "memory_size_mib" : 4096,
+              "parent_reference" : null,
+              "hardware_clock_timezone" : "",
+              "guest_customization" : null,
+              "power_state" : "ON",
+              "type" : "",
+              "account_uuid" : "3cda6d9e-ad20-4954-80eb-712ed2022ce4",
+              "boot_config" : {
+                "boot_device" : {
+                  "type" : "",
+                  "disk_address" : {
+                    "type" : "",
+                    "device_index" : 0,
+                    "adapter_type" : "SCSI"
+                  }
+                },
+                "type" : "",
+                "boot_type" : "",
+                "mac_address" : ""
+              },
+              "disk_list" : [
+                {
+                  "data_source_reference" : {
+                    "kind" : "image",
+                    "type" : "",
+                    "name" : "WinToolsVM.qcow2",
+                    "uuid" : "da46c14f-b113-42df-be79-6d82ee788dda"
+                  },
+                  "type" : "",
+                  "disk_size_mib" : 0,
+                  "volume_group_reference" : null,
+                  "device_properties" : {
+                    "type" : "",
+                    "disk_address" : {
+                      "type" : "",
+                      "device_index" : 0,
+                      "adapter_type" : "SCSI"
+                    },
+                    "device_type" : "DISK"
+                  }
+                }
+              ]
+            },
+            "availability_zone_reference" : null,
+            "backup_policy" : null,
+            "type" : "",
+            "cluster_reference" : null,
+            "categories" : ""
+          },
+          "variable_list" : []
+        },
+        {
+          "description" : "",
+          "action_list" : [],
+          "type" : "AHV_VM",
+          "name" : "VM3",
+          "readiness_probe" : {
+            "connection_type" : "POWERSHELL",
+            "retries" : "5",
+            "connection_protocol" : "http",
+            "connection_port" : 5985,
+            "address" : "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
+            "delay_secs" : "60",
+            "disable_readiness_probe" : true
+          },
+          "editables" : {
+            "create_spec" : {
+              "resources" : {
+                "nic_list" : {},
+                "serial_port_list" : {}
+              }
+            }
+          },
+          "os_type" : "Windows",
+          "create_spec" : {
+            "name" : "VDIClient2",
+            "resources" : {
+              "nic_list" : [
+                {
+                  "nic_type" : "NORMAL_NIC",
+                  "ip_endpoint_list" : [],
+                  "network_function_chain_reference" : null,
+                  "network_function_nic_type" : "INGRESS",
+                  "mac_address" : "",
+                  "subnet_reference" : {
+                    "kind" : "subnet",
+                    "type" : "",
+                    "name" : "",
+                    "uuid" : "2e83db8c-789f-4288-a5dd-ce94eeb16abb"
+                  },
+                  "type" : ""
+                }
+              ],
+              "serial_port_list" : [],
+              "guest_tools" : null,
+              "num_vcpus_per_socket" : 1,
+              "num_sockets" : 2,
+              "gpu_list" : [],
+              "memory_size_mib" : 4096,
+              "parent_reference" : null,
+              "hardware_clock_timezone" : "",
+              "guest_customization" : null,
+              "power_state" : "ON",
+              "type" : "",
+              "account_uuid" : "3cda6d9e-ad20-4954-80eb-712ed2022ce4",
+              "boot_config" : {
+                "boot_device" : {
+                  "type" : "",
+                  "disk_address" : {
+                    "type" : "",
+                    "device_index" : 0,
+                    "adapter_type" : "SCSI"
+                  }
+                },
+                "type" : "",
+                "boot_type" : "",
+                "mac_address" : ""
+              },
+              "disk_list" : [
+                {
+                  "data_source_reference" : {
+                    "kind" : "image",
+                    "type" : "",
+                    "name" : "WinToolsVM.qcow2",
+                    "uuid" : "da46c14f-b113-42df-be79-6d82ee788dda"
+                  },
+                  "type" : "",
+                  "disk_size_mib" : 0,
+                  "volume_group_reference" : null,
+                  "device_properties" : {
+                    "type" : "",
+                    "disk_address" : {
+                      "type" : "",
+                      "device_index" : 0,
+                      "adapter_type" : "SCSI"
+                    },
+                    "device_type" : "DISK"
+                  }
+                }
+              ]
+            },
+            "availability_zone_reference" : null,
+            "backup_policy" : null,
+            "type" : "",
+            "cluster_reference" : null,
+            "categories" : {}
+          },
+          "variable_list" : []
+        }
+      ],
+      "credential_definition_list" : [
+        {
+          "username" : "administrator",
+          "description" : "",
+          "type" : "PASSWORD",
+          "secret" : {
+            "attrs" : {
+              "is_secret_modified" : true,
+              "secret_reference" : {}
+            },
+            "value" : "7xcuEdmBhSqCTQ9aB2PzDpQC5KjKB78qJ3L7WfJWBPgX4OfghoMyQ6ES:utf-8"
+          },
+          "name" : "administrator"
+        }
+      ],
+      "package_definition_list" : [
+        {
+          "description" : "",
+          "action_list" : [],
+          "type" : "DEB",
+          "service_local_reference_list" : [
+            {
+              "kind" : "app_service",
+              "name" : "WinTools"
+            }
+          ],
+          "name" : "Package1",
+          "version" : "",
+          "options" : {
+            "install_runbook" : {
+              "task_definition_list" : [
+                {
+                  "target_any_local_reference" : {
+                    "kind" : "app_package",
+                    "name" : "Package1"
+                  },
+                  "retries" : "0",
+                  "description" : "",
+                  "child_tasks_local_reference_list" : [],
+                  "name" : "6aa65d9d_dag",
+                  "attrs" : {
+                    "edges" : [],
+                    "type" : ""
+                  },
+                  "timeout_secs" : "0",
+                  "type" : "DAG",
+                  "variable_list" : []
+                }
+              ],
+              "description" : "",
+              "name" : "eb6fc7da_runbook",
+              "main_task_local_reference" : {
+                "kind" : "app_task",
+                "name" : "6aa65d9d_dag"
+              },
+              "variable_list" : []
+            },
+            "type" : "",
+            "uninstall_runbook" : {
+              "task_definition_list" : [
+                {
+                  "target_any_local_reference" : {
+                    "kind" : "app_package",
+                    "name" : "Package1"
+                  },
+                  "retries" : "0",
+                  "description" : "",
+                  "child_tasks_local_reference_list" : [],
+                  "name" : "0821bf52_dag",
+                  "attrs" : {
+                    "edges" : [],
+                    "type" : ""
+                  },
+                  "timeout_secs" : "0",
+                  "type" : "DAG",
+                  "variable_list" : []
+                }
+              ],
+              "description" : "",
+              "name" : "c34e3921_runbook",
+              "main_task_local_reference" : {
+                "kind" : "app_task",
+                "name" : "0821bf52_dag"
+              },
+              "variable_list" : []
+            }
+          },
+          "variable_list" : []
+        },
+        {
+          "description" : "",
+          "action_list" : [],
+          "type" : "DEB",
+          "service_local_reference_list" : [
+            {
+              "kind" : "app_service",
+              "name" : "VDIClient1"
+            }
+          ],
+          "name" : "Package2",
+          "version" : "",
+          "options" : {
+            "install_runbook" : {
+              "task_definition_list" : [
+                {
+                  "target_any_local_reference" : {
+                    "kind" : "app_package",
+                    "name" : "Package2"
+                  },
+                  "retries" : "0",
+                  "description" : "",
+                  "child_tasks_local_reference_list" : [],
+                  "name" : "6497400c_dag",
+                  "attrs" : {
+                    "edges" : [],
+                    "type" : ""
+                  },
+                  "timeout_secs" : "0",
+                  "type" : "DAG",
+                  "variable_list" : []
+                }
+              ],
+              "description" : "",
+              "name" : "ee1cdc10_runbook",
+              "main_task_local_reference" : {
+                "kind" : "app_task",
+                "name" : "6497400c_dag"
+              },
+              "variable_list" : []
+            },
+            "type" : "",
+            "uninstall_runbook" : {
+              "task_definition_list" : [
+                {
+                  "target_any_local_reference" : {
+                    "kind" : "app_package",
+                    "name" : "Package2"
+                  },
+                  "retries" : "0",
+                  "description" : "",
+                  "child_tasks_local_reference_list" : [],
+                  "name" : "d8b89144_dag",
+                  "attrs" : {
+                    "edges" : [],
+                    "type" : ""
+                  },
+                  "timeout_secs" : "0",
+                  "type" : "DAG",
+                  "variable_list" : []
+                }
+              ],
+              "description" : "",
+              "name" : "6fd11671_runbook",
+              "main_task_local_reference" : {
+                "kind" : "app_task",
+                "name" : "d8b89144_dag"
+              },
+              "variable_list" : []
+            }
+          },
+          "variable_list" : []
+        },
+        {
+          "description" : "",
+          "action_list" : [],
+          "type" : "DEB",
+          "service_local_reference_list" : [
+            {
+              "kind" : "app_service",
+              "name" : "VDIClient2"
+            }
+          ],
+          "name" : "Package3",
+          "version" : "",
+          "options" : {
+            "install_runbook" : {
+              "task_definition_list" : [
+                {
+                  "target_any_local_reference" : {
+                    "kind" : "app_package",
+                    "name" : "Package3"
+                  },
+                  "retries" : "0",
+                  "description" : "",
+                  "child_tasks_local_reference_list" : [],
+                  "name" : "b269ae80_dag",
+                  "attrs" : {
+                    "edges" : [],
+                    "type" : ""
+                  },
+                  "timeout_secs" : "0",
+                  "type" : "DAG",
+                  "variable_list" : []
+                }
+              ],
+              "description" : "",
+              "name" : "081c820c_runbook",
+              "main_task_local_reference" : {
+                "kind" : "app_task",
+                "name" : "b269ae80_dag"
+              },
+              "variable_list" : []
+            },
+            "type" : "",
+            "uninstall_runbook" : {
+              "task_definition_list" : [
+                {
+                  "target_any_local_reference" : {
+                    "kind" : "app_package",
+                    "name" : "Package3"
+                  },
+                  "retries" : "0",
+                  "description" : "",
+                  "child_tasks_local_reference_list" : [],
+                  "name" : "42504d57_dag",
+                  "attrs" : {
+                    "edges" : [],
+                    "type" : ""
+                  },
+                  "timeout_secs" : "0",
+                  "type" : "DAG",
+                  "variable_list" : []
+                }
+              ],
+              "description" : "",
+              "name" : "5d56a0ec_runbook",
+              "main_task_local_reference" : {
+                "kind" : "app_task",
+                "name" : "42504d57_dag"
+              },
+              "variable_list" : []
+            }
+          },
+          "variable_list" : []
+        }
+      ],
+      "app_profile_list" : [
+        {
+          "deployment_create_list" : [
+            {
+              "type" : "GREENFIELD",
+              "action_list" : [],
+              "name" : "accdb2ec_deployment",
+              "min_replicas" : "1",
+              "default_replicas" : "1",
+              "depends_on_list" : [],
+              "published_service_local_reference_list" : [],
+              "max_replicas" : "1",
+              "package_local_reference_list" : [
+                {
+                  "kind" : "app_package",
+                  "name" : "Package1"
+                }
+              ],
+              "substrate_local_reference" : {
+                "kind" : "app_substrate",
+                "name" : "VM1"
+              },
+              "variable_list" : [],
+              "description" : ""
+            },
+            {
+              "type" : "GREENFIELD",
+              "action_list" : [],
+              "name" : "66b5c322_deployment",
+              "min_replicas" : "1",
+              "default_replicas" : "1",
+              "depends_on_list" : [],
+              "published_service_local_reference_list" : [],
+              "max_replicas" : "1",
+              "package_local_reference_list" : [
+                {
+                  "kind" : "app_package",
+                  "name" : "Package2"
+                }
+              ],
+              "substrate_local_reference" : {
+                "kind" : "app_substrate",
+                "name" : "VM2"
+              },
+              "variable_list" : [],
+              "description" : ""
+            },
+            {
+              "type" : "GREENFIELD",
+              "action_list" : [],
+              "name" : "d84a47b3_deployment",
+              "min_replicas" : "1",
+              "default_replicas" : "1",
+              "depends_on_list" : [],
+              "published_service_local_reference_list" : [],
+              "max_replicas" : "1",
+              "package_local_reference_list" : [
+                {
+                  "kind" : "app_package",
+                  "name" : "Package3"
+                }
+              ],
+              "substrate_local_reference" : {
+                "kind" : "app_substrate",
+                "name" : "VM3"
+              },
+              "variable_list" : [],
+              "description" : ""
+            }
+          ],
+          "description" : "",
+          "action_list" : [],
+          "name" : "Default",
+          "variable_list" : []
+        }
+      ],
+      "published_service_definition_list" : [],
+      "default_credential_local_reference" : {
+        "kind" : "app_credential",
+        "name" : "administrator"
+      },
+      "type" : "USER"
+    },
+    "name" : "SecClients"
+  },
+  "api_version" : "3.0",
+  "metadata" : {
+    "last_update_time" : "1610384925320931",
+    "kind" : "blueprint",
+    "spec_version" : 3,
+    "creation_time" : "1610384738308284",
+    "name" : "SecClients"
+  }
+}
