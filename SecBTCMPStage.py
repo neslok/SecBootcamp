@@ -11,12 +11,12 @@ FiestaPath = '/Users/keith.olsen/Downloads/Fiesta_Sec.json'
 SecClientsPath = '/Users/keith.olsen/Downloads/SecClients.json'
 GraylogPath = '/Users/keith.olsen/Downloads/Graylog1.json'
 
-# Defines Prism Central variables
+# Defines Prism Central variables - update these with your HPOC details
 
 pcUserID = 'admin'
 pcPassword = 'nx2Tech123!'
-prisCentIP = '10.38.3.73'
-#prisCentIP = input("Enter Prism Central IP: ")
+#prisCentIP = '10.38.3.73'
+prisCentIP = input("Enter Prism Central IP: ")
 
 # This sets up the https connection
 
@@ -115,7 +115,7 @@ BPUP_headers = {'Authorization': "Basic " + authKey}
 
 response2 = requests.request("POST", BPput_url, headers=BPUP_headers, data=payload2, files=files2, verify=False)
 
-print(response2.text)
+#print(response2.text)
 
 # Put Graylog
 
@@ -128,7 +128,7 @@ BPUP_headers = {'Authorization': "Basic " + authKey}
 
 response3 = requests.request("POST", BPput_url, headers=BPUP_headers, data=GL_payload, files=files3, verify=False)
 
-print(response3.text)
+#print(response3.text)
 
 #wait 5 sec after upload
 
@@ -195,7 +195,7 @@ SecClibp_SNuuid_update = re.sub(SecCliSNRuuid, SNUuid, SecClibp_spec2)
 #Update SecClients blueprint spec with version with new uuids
 
 SecClibp_spec_update = '{ "spec": ' + SecClibp_SNuuid_update + ', "api_version": "3.0", "metadata": ' + SecClibp_meta + '}'
-print(SecClibp_spec_update)
+#print(SecClibp_spec_update)
 
 SecCliBP_updateRsp = requests.request("PUT", BPurl, headers=headers, data=SecClibp_spec_update, verify=False).json()
 
@@ -304,6 +304,7 @@ for each in BPlist['entities']:
         }
     }
     json_launch = json.dumps(launch_payload)
-    print(json_launch)
+    #print(json_launch)
     BPlaunch = requests.request("POST", baseurl + "blueprints/" + BPUuid + "/simple_launch", headers=headers, data=json_launch, verify=False)
-    print(BPlaunch.text)
+    #print(BPlaunch.text)
+    print("Launch of " + BPName + " executed")
