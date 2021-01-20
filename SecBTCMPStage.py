@@ -4,19 +4,26 @@ from http.client import HTTPSConnection
 from base64 import b64encode
 import re
 import time
+import csv
 
-#define path to blueprint files - Update these for your local system accordingly.
+
+
+#define path to local files (blueprints and cluster(s) details) - Update these for your local system accordingly.
 
 FiestaPath = '/Users/keith.olsen/Downloads/Fiesta_Sec.json'
 SecClientsPath = '/Users/keith.olsen/Downloads/SecClients.json'
 GraylogPath = '/Users/keith.olsen/Downloads/Graylog1.json'
 
-# Defines Prism Central variables - update these with your HPOC details
+# Defines Prism Central variables - update these with your HPOC details (uncomment for single cluster config)
 
 pcUserID = 'admin'
 pcPassword = 'nx2Tech123!'
-#prisCentIP = '10.38.3.73'
-prisCentIP = input("Enter Prism Central IP: ")
+prisCentIP = '10.38.3.73'
+#prisCentIP = input("Enter Prism Central IP: ")
+
+# Reads 
+
+
 
 # This sets up the https connection
 
@@ -98,23 +105,26 @@ BPput_url = baseurl + "blueprints/import_file"
 payload = {'project_uuid': PJUuid, 'name': 'Fiesta1', 'passphrase': 'nx2Tech123!'}
 
 files = [
-    ('file', ('Fiesta-Multi_KOv2.json', open(FiestaPath, 'rb'), 'application/json'))
+    ('file', ('Fiesta-Multi_KOv2.json', open(FiestaPath, 'r'), 'application/json'))
 ]
 BPUP_headers = {'Authorization': "Basic " + authKey}
 
 response = requests.request("POST", BPput_url, headers=BPUP_headers, data=payload, files=files, verify=False)
+
+print("Fiesta uploaded")
 
 # Put SecClients
 
 payload2 = {'project_uuid': PJUuid, 'name': 'SecClients', 'passphrase': 'nx2Tech123!'}
 
 files2 = [
-    ('file', ('SecClient.json', open(SecClientsPath, 'rb'), 'application/json'))
+    ('file', ('SecClient.json', open(SecClientsPath, 'r'), 'application/json'))
 ]
 BPUP_headers = {'Authorization': "Basic " + authKey}
 
 response2 = requests.request("POST", BPput_url, headers=BPUP_headers, data=payload2, files=files2, verify=False)
 
+print("SecClients uploaded")
 #print(response2.text)
 
 # Put Graylog
@@ -122,12 +132,13 @@ response2 = requests.request("POST", BPput_url, headers=BPUP_headers, data=paylo
 GL_payload = {'project_uuid': PJUuid, 'name': 'Graylog', 'passphrase': 'nx2Tech123!'}
 
 files3 = [
-    ('file', ('Graylog1.json', open(GraylogPath, 'rb'), 'application/json'))
+    ('file', ('Graylog1.json', open(GraylogPath, 'r'), 'application/json'))
 ]
 BPUP_headers = {'Authorization': "Basic " + authKey}
 
 response3 = requests.request("POST", BPput_url, headers=BPUP_headers, data=GL_payload, files=files3, verify=False)
 
+print("Graylog uploaded")
 #print(response3.text)
 
 #wait 5 sec after upload
@@ -199,7 +210,7 @@ SecClibp_spec_update = '{ "spec": ' + SecClibp_SNuuid_update + ', "api_version":
 
 SecCliBP_updateRsp = requests.request("PUT", BPurl, headers=headers, data=SecClibp_spec_update, verify=False).json()
 
-
+print("SecClient updated")
 
 #UPDATE FIESTA BLUEPRINT
 
@@ -234,6 +245,7 @@ bp_spec_update = '{ "spec": ' + bp_SNuuid_update + ', "api_version": "3.0", "met
 
 BP_updateRsp = requests.request("PUT", BPurl, headers=headers, data=bp_spec_update, verify=False).json()
 
+print("Fiesta updated")
 #UPDATE GRAYLOG BLUEPRINT
 
 # Extracts blueprint name and uuid from BPlist for specified blueprint in "if" statement.
@@ -267,7 +279,7 @@ bp_spec_update = '{ "spec": ' + bp_SNuuid_update + ', "api_version": "3.0", "met
 
 BP_updateRsp = requests.request("PUT", BPurl, headers=headers, data=bp_spec_update, verify=False).json()
 
-
+print("Graylog updated")
 
 
 #Launch the blueprints
