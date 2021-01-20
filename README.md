@@ -15,4 +15,4 @@ Things to note:
   - local path to the blueprint JSON files
 These are located at the begining of the script, and are commented for ease of location.
 
-5. Probably something else that I can't recall at this time, but will update as things come up.
+5.If you have several clusters to prepare, use SecBTCMPStage_auto.py. It will read in PC IP, admin login and password from a csv file - must be ipaddress,loginID,password , with a new row for each cluster -  (example in repo)  - a single script execution can stage mutiple environments without human intervention.
