@@ -14,16 +14,12 @@ FiestaPath = '/Users/keith.olsen/Downloads/Fiesta_Sec.json'
 SecClientsPath = '/Users/keith.olsen/Downloads/SecClients.json'
 GraylogPath = '/Users/keith.olsen/Downloads/Graylog1.json'
 
-# Defines Prism Central variables - update these with your HPOC details (uncomment for single cluster config)
+# Defines Prism Central variables - update these with your HPOC details
 
 pcUserID = 'admin'
 pcPassword = 'nx2Tech123!'
 prisCentIP = '10.38.3.73'
 #prisCentIP = input("Enter Prism Central IP: ")
-
-# Reads 
-
-
 
 # This sets up the https connection
 
@@ -52,24 +48,24 @@ with open(SecClientsPath) as json_file:
     blueprint = json.load(json_file)
     for eachvm in blueprint['spec']['resources']['substrate_definition_list']:
         for eachnic in eachvm['create_spec']['resources']['nic_list']:
-            print(eachvm['name'] + " " + eachnic['subnet_reference']['uuid'])
+            #print(eachvm['name'] + " " + eachnic['subnet_reference']['uuid'])
             SecCliSNRuuid = eachnic['subnet_reference']['uuid']
         for eachimg in eachvm['create_spec']['resources']['disk_list']:
             SecCliIMGRuuid = eachimg['data_source_reference']['uuid']
-            print(eachimg['data_source_reference']['uuid'])
+            #print(eachimg['data_source_reference']['uuid'])
 
 with open(FiestaPath) as json_file:
     blueprint = json.load(json_file)
     for eachvm in blueprint['spec']['resources']['substrate_definition_list']:
         for eachnic in eachvm['create_spec']['resources']['nic_list']:
-            print(eachvm['name'] + " " + eachnic['subnet_reference']['uuid'])
+            #print(eachvm['name'] + " " + eachnic['subnet_reference']['uuid'])
             SNRuuid = eachnic['subnet_reference']['uuid']
 
 with open(GraylogPath) as json_file:
     blueprint = json.load(json_file)
     for eachvm in blueprint['spec']['resources']['substrate_definition_list']:
         for eachnic in eachvm['create_spec']['resources']['nic_list']:
-            print(eachvm['name'] + " " + eachnic['subnet_reference']['uuid'])
+           # print(eachvm['name'] + " " + eachnic['subnet_reference']['uuid'])
             SNRuuid = eachnic['subnet_reference']['uuid']
 
 # Get project details (project uuid and subnet uuid)
@@ -197,8 +193,8 @@ SecClibp_meta = json.dumps(SecCliBPresponse['metadata'])
 #print(SecClibp_spec)
 
 #Substitute image and subnet uuids from blueprint with correct ones from PC
-print(SecCliIMGRuuid, SecCliSNRuuid)
-print(IMGUuid, SNUuid)
+#print(SecCliIMGRuuid, SecCliSNRuuid)
+#print(IMGUuid, SNUuid)
 
 SecClibp_spec2 = re.sub(SecCliIMGRuuid, IMGUuid, SecClibp_spec)
 SecClibp_SNuuid_update = re.sub(SecCliSNRuuid, SNUuid, SecClibp_spec2)
@@ -302,7 +298,7 @@ for each in BPlist['entities']:
 
     APRresponse = requests.request("GET", BPurl, headers=headers, data=payload, verify=False).json()
     APRuuid = APRresponse['resources'][0]['app_profile_reference']['uuid']
-    print(APRuuid)
+    #print(APRuuid)
 
     launch_payload = {
         'spec': {
