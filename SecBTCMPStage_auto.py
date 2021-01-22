@@ -5,6 +5,8 @@ from base64 import b64encode
 import re
 import time
 import csv
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 

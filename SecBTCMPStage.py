@@ -5,6 +5,8 @@ from base64 import b64encode
 import re
 import time
 import csv
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 
@@ -18,8 +20,8 @@ GraylogPath = '/Users/keith.olsen/Downloads/Graylog1.json'
 
 pcUserID = 'admin'
 pcPassword = 'nx2Tech123!'
-prisCentIP = '10.38.3.73'
-#prisCentIP = input("Enter Prism Central IP: ")
+#prisCentIP = '10.38.3.73'
+prisCentIP = input("Enter Prism Central IP: ")
 
 # This sets up the https connection
 
