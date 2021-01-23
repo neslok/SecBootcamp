@@ -65,11 +65,12 @@ with open(clusterdeets) as csvfile:
         #print(json_APPlist)
 
         #print(APPlist)
+        print()
         print(prisCentIP)
         for each in APPlist['entities']:
             APPUuid = (each['status']['uuid'])
             APPName = (each['status']['name'])
             APPStat = (each['status']['state'])
-
-
             print(APPName + " " + APPStat)
+
+

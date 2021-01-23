@@ -56,65 +56,68 @@ with open(clusterdeets) as csvfile:
 
 
         # #Get blueprint info
-        #
-        # BPpayload = {'kind': 'blueprint'}
-        #
-        # json_BPpayload = json.dumps(BPpayload)
-        #
-        # BPlist = requests.request("POST", baseurl + "blueprints/list", headers=headers, data=json_BPpayload, verify=False).json()
-        #
-        # # Find SecClients BP uuid and name
-        # for each in BPlist['entities']:
-        #     if (each['status']['name']) == "SecClients":
-        #         SecCliBPUuid = (each['status']['uuid'])
-        #         SecCliBPName = (each['status']['name'])
-        #
-        # #DELETE SecClients blueprint
-        #
-        # BPurl = baseurl + "/blueprints/" + SecCliBPUuid
-        # payload = {}
-        #
-        # SecCliBPresponse = requests.request("DELETE", BPurl, headers=headers, data=payload, verify=False).json()
-        #
-        # print("SecClients DELETED")
-        #
-        # #DELETE FIESTA BLUEPRINT
-        #
-        # # Extracts blueprint name and uuid from BPlist for specified blueprint in "if" statement.
-        #
-        # for each in BPlist['entities']:
-        #     if (each['status']['name']) == "Fiesta1":  # Edit blueprint name as required.
-        #         Fiesta_BPUuid = (each['status']['uuid'])
-        #         Fiesta_BPName = (each['status']['name'])
-        #
-        # BPurl = baseurl + "/blueprints/" + Fiesta_BPUuid
-        #
-        # payload = {}
-        #
-        # #print(BPurl)
-        #
-        # BPresponse = requests.request("DELETE", BPurl, headers=headers, data=payload, verify=False).json()
-        #
-        # print("Fiesta DELETED")
-        #
-        # #DELETE GRAYLOG BLUEPRINT
-        #
-        # # Extracts blueprint name and uuid from BPlist for specified blueprint in "if" statement.
-        #
-        # for each in BPlist['entities']:
-        #     if (each['status']['name']) == "Graylog":  # Edit blueprint name as required.
-        #         GL_BPUuid = (each['status']['uuid'])
-        #         GL_BPName = (each['status']['name'])
-        #
-        # BPurl = baseurl + "/blueprints/" + GL_BPUuid
-        #
-        # payload = {}
-        #
-        # #print(BPurl)
-        #
-        # BPresponse = requests.request("DELETE", BPurl, headers=headers, data=payload, verify=False).json()
-        #
-        # print("Fiesta DELETED")
+
+        BPpayload = {'kind': 'blueprint'}
+
+        json_BPpayload = json.dumps(BPpayload)
+
+        BPlist = requests.request("POST", baseurl + "blueprints/list", headers=headers, data=json_BPpayload, verify=False).json()
+        
+        print()
+        print(prisCentIP)
+
+        # Find SecClients BP uuid and name
+        for each in BPlist['entities']:
+            if (each['status']['name']) == "SecClients":
+                SecCliBPUuid = (each['status']['uuid'])
+                SecCliBPName = (each['status']['name'])
+
+        #DELETE SecClients blueprint
+
+        BPurl = baseurl + "/blueprints/" + SecCliBPUuid
+        payload = {}
+
+        SecCliBPresponse = requests.request("DELETE", BPurl, headers=headers, data=payload, verify=False).json()
+
+        print("SecClients blueprint DELETED")
+
+        #DELETE FIESTA BLUEPRINT
+
+        # Extracts blueprint name and uuid from BPlist for specified blueprint in "if" statement.
+
+        for each in BPlist['entities']:
+            if (each['status']['name']) == "Fiesta1":  # Edit blueprint name as required.
+                Fiesta_BPUuid = (each['status']['uuid'])
+                Fiesta_BPName = (each['status']['name'])
+
+        BPurl = baseurl + "/blueprints/" + Fiesta_BPUuid
+
+        payload = {}
+
+        #print(BPurl)
+
+        BPresponse = requests.request("DELETE", BPurl, headers=headers, data=payload, verify=False).json()
+
+        print("Fiesta blueprint DELETED")
+
+        #DELETE GRAYLOG BLUEPRINT
+
+        # Extracts blueprint name and uuid from BPlist for specified blueprint in "if" statement.
+
+        for each in BPlist['entities']:
+            if (each['status']['name']) == "Graylog":  # Edit blueprint name as required.
+                GL_BPUuid = (each['status']['uuid'])
+                GL_BPName = (each['status']['name'])
+
+        BPurl = baseurl + "/blueprints/" + GL_BPUuid
+
+        payload = {}
+
+        #print(BPurl)
+
+        BPresponse = requests.request("DELETE", BPurl, headers=headers, data=payload, verify=False).json()
+
+        print("Graylog blueprint DELETED")
 
         # DELETE Apps
 
@@ -130,8 +133,7 @@ with open(clusterdeets) as csvfile:
         #print(APPlist)
 
         # DELETE APPS
-
-        print(prisCentIP)
+        print()
         for each in APPlist['entities']:
             APPUuid = (each['status']['uuid'])
             APPName = (each['status']['name'])
@@ -141,4 +143,4 @@ with open(clusterdeets) as csvfile:
             payload = {}
 
             APRresponse = requests.request("DELETE", APPurl, headers=headers, data=payload, verify=False).json()
-            print("Deleting " + APPName)
+            print(APPName + " application deletion started")

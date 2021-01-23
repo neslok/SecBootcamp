@@ -84,7 +84,7 @@ with open(clusterdeets) as csvfile:
                 for eachnic in eachvm['create_spec']['resources']['nic_list']:
                     #print(eachvm['name'] + " " + eachnic['subnet_reference']['uuid'])
                     GL_SNRuuid = eachnic['subnet_reference']['uuid']
-
+        print()
         print("Provisioning: " + prisCentIP)
 
         # Get project details (project uuid and subnet uuid)
@@ -102,13 +102,13 @@ with open(clusterdeets) as csvfile:
                 PJName = (each['spec']['name'])
                 SNUuid = (each['spec']['resources']['subnet_reference_list'][0]['uuid'])
                 SNName = (each['spec']['resources']['subnet_reference_list'][0]['name'])
-        print("Cluster info:")
-        print("Project = " + PJName + ", " + PJUuid)
-        print("Subnet = " + SNName + ", " + SNUuid)
+        # print("Cluster info:")
+        # print("Project = " + PJName + ", " + PJUuid)
+        # print("Subnet = " + SNName + ", " + SNUuid)
 
 
-
-
+        print()
+        print("Uploading blueprints")
         # Put the BP file up to Prism Central
 
         #Specify URL to upload to
@@ -160,7 +160,9 @@ with open(clusterdeets) as csvfile:
         #wait 5 sec after upload
 
         time.sleep(5)
-
+        
+        print()
+        print("Updating blueprints")
         #UPDATE SECCLIENTS BLURPRINT
 
         #Get image uuid from PC for SecClients BP
@@ -177,7 +179,7 @@ with open(clusterdeets) as csvfile:
                 IMGUuid = (each['metadata']['uuid'])
                 IMGName = (each['status']['name'])
 
-        print("Image = " + IMGName + ", " + IMGUuid)
+        #print("Image = " + IMGName + ", " + IMGUuid)
         #print(json_IMGlist)
 
         #Get blueprint info for SecClients (uuid)
@@ -193,7 +195,7 @@ with open(clusterdeets) as csvfile:
                 SecCliBPUuid = (each['status']['uuid'])
                 SecCliBPName = (each['status']['name'])
 
-        print("Blueprint = " + SecCliBPName + ", " + SecCliBPUuid)
+        #print("Blueprint = " + SecCliBPName + ", " + SecCliBPUuid)
 
         #Get SecClients spec and metadata from PC
 
@@ -237,7 +239,7 @@ with open(clusterdeets) as csvfile:
                 Fiesta_BPUuid = (each['status']['uuid'])
                 Fiesta_BPName = (each['status']['name'])
 
-        print("Blueprint = " + Fiesta_BPName + ", " + Fiesta_BPUuid)
+        #print("Blueprint = " + Fiesta_BPName + ", " + Fiesta_BPUuid)
 
         # Retrieves the details (spec) for the
         BPurl = baseurl + "/blueprints/" + Fiesta_BPUuid
@@ -272,7 +274,7 @@ with open(clusterdeets) as csvfile:
                 GL_BPUuid = (each['status']['uuid'])
                 GL_BPName = (each['status']['name'])
 
-        print("Blueprint = " + GL_BPName + ", " + GL_BPUuid)
+        #print("Blueprint = " + GL_BPName + ", " + GL_BPUuid)
 
         # Retrieves the details (spec) for the
         BPurl = baseurl + "/blueprints/" + GL_BPUuid
@@ -299,7 +301,8 @@ with open(clusterdeets) as csvfile:
         print("Graylog updated")
 
 
-
+        print()
+        print("Launching applications")
         #Launch the blueprints
 
         #Get app_profile_reference uuid
