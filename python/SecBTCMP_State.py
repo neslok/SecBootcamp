@@ -22,6 +22,7 @@ clusterdeets = '/Users/keith.olsen/Downloads/clusters.csv' # Path to csv file wi
 
 with open(clusterdeets) as csvfile:
     readCSV = csv.reader(csvfile, delimiter=',')
+    next(readCSV)
     for row in readCSV:
         prisCentIP = (row[0])
         #print(prisCentIP)
