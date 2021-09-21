@@ -1,7 +1,7 @@
 # Define variables for execution#
 #################################
 
-$clusterdeets = Import-Csv /Users/keith.olsen/Downloads/clusters.csv # csv file with cluster details (IP, userid, password)
+$clusterdeets = Import-Csv /Users/keith.olsen/Documents/GitHub/SecBootcamp/clusters.csv # csv file with cluster details (IP, userid, password)
 $blueprints = @('Fiesta1','Graylog1','SecClients') # Identifies which blueprints will be deleted (names must match)
 
 

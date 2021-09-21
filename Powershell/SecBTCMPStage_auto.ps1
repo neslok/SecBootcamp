@@ -3,9 +3,9 @@
 # Update with information specific to your environment #
 ########################################################
 
-$clusterdeets = Import-Csv /Users/keith.olsen/Downloads/clusters.csv # csv file with cluster details (IP, userid, password)
+$clusterdeets = Import-Csv /Users/keith.olsen/Documents/GitHub/SecBootcamp/clusters.csv # csv file with cluster details (IP, userid, password)
 $blueprints = @('Fiesta1','Graylog1','SecClients') # Identifies which blueprint files will be used (names must match)
-$BPpath = '/Users/keith.olsen/Downloads/' # Path to directory containing blueprint files
+$BPpath = '/Users/keith.olsen/Documents/GitHub/SecBootcamp/' # Path to directory containing blueprint files
 
 # Establishes variables for cluster details
 
