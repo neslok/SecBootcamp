@@ -1,0 +1,728 @@
+{
+  "status": {},
+  "contains_secrets": true,
+  "product_version": "3.1.1",
+  "spec": {
+    "description": "* [Graylog](http://@@{GrayLog.address}@@:9000)",
+    "resources": {
+      "client_attrs": {
+        "d50c04ab_deployment": {
+          "y": -51,
+          "x": -2
+        },
+        "d55e7916-9d6e-4baf-84de-0156d7420e42": {
+          "y": -51,
+          "x": -2
+        },
+        "66b419b4-73ab-40de-ac38-032e62b8dc86": {
+          "y": -51,
+          "x": -2
+        },
+        "d85b4a18-1ce4-46e0-a539-526423f2b25d": {
+          "y": -51,
+          "x": -2
+        },
+        "104ef4d4-d34f-450e-9110-9c1fb73392e9": {
+          "y": -51,
+          "x": -2
+        }
+      },
+      "service_definition_list": [
+        {
+          "singleton": false,
+          "action_list": [
+            {
+              "description": "System action for creating an application",
+              "type": "system",
+              "critical": false,
+              "runbook": {
+                "task_definition_list": [
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [
+                      {
+                        "kind": "app_task",
+                        "name": "EnableGrayLog"
+                      }
+                    ],
+                    "name": "6b6bbee7_dag",
+                    "attrs": {
+                      "edges": [],
+                      "type": ""
+                    },
+                    "timeout_secs": "0",
+                    "type": "DAG",
+                    "variable_list": []
+                  },
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [],
+                    "name": "EnableGrayLog",
+                    "attrs": {
+                      "exit_status": [],
+                      "script": "#!/bin/bash\nsudo systemctl enable graylog-server\nsudo systemctl start graylog-server\n",
+                      "script_type": "sh",
+                      "type": "",
+                      "command_line_args": "",
+                      "login_credential_local_reference": {
+                        "kind": "app_credential",
+                        "name": "CENTOS"
+                      }
+                    },
+                    "timeout_secs": "0",
+                    "type": "EXEC",
+                    "variable_list": []
+                  }
+                ],
+                "description": "",
+                "name": "f3bf64fc_runbook",
+                "main_task_local_reference": {
+                  "kind": "app_task",
+                  "name": "6b6bbee7_dag"
+                },
+                "variable_list": []
+              },
+              "name": "action_create"
+            },
+            {
+              "description": "System action for deleting an application. Deletes created VMs as well",
+              "type": "system",
+              "critical": false,
+              "runbook": {
+                "task_definition_list": [
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [],
+                    "name": "b5ac7d8e_dag",
+                    "attrs": {
+                      "edges": [],
+                      "type": ""
+                    },
+                    "timeout_secs": "0",
+                    "type": "DAG",
+                    "variable_list": []
+                  }
+                ],
+                "description": "",
+                "name": "0c81ed78_runbook",
+                "main_task_local_reference": {
+                  "kind": "app_task",
+                  "name": "b5ac7d8e_dag"
+                },
+                "variable_list": []
+              },
+              "name": "action_delete"
+            },
+            {
+              "description": "System action for starting an application",
+              "type": "system",
+              "critical": false,
+              "runbook": {
+                "task_definition_list": [
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [],
+                    "name": "e1b291d3_dag",
+                    "attrs": {
+                      "edges": [],
+                      "type": ""
+                    },
+                    "timeout_secs": "0",
+                    "type": "DAG",
+                    "variable_list": []
+                  }
+                ],
+                "description": "",
+                "name": "8b6382c1_runbook",
+                "main_task_local_reference": {
+                  "kind": "app_task",
+                  "name": "e1b291d3_dag"
+                },
+                "variable_list": []
+              },
+              "name": "action_start"
+            },
+            {
+              "description": "System action for stopping an application",
+              "type": "system",
+              "critical": false,
+              "runbook": {
+                "task_definition_list": [
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [],
+                    "name": "dde9648a_dag",
+                    "attrs": {
+                      "edges": [],
+                      "type": ""
+                    },
+                    "timeout_secs": "0",
+                    "type": "DAG",
+                    "variable_list": []
+                  }
+                ],
+                "description": "",
+                "name": "50382463_runbook",
+                "main_task_local_reference": {
+                  "kind": "app_task",
+                  "name": "dde9648a_dag"
+                },
+                "variable_list": []
+              },
+              "name": "action_stop"
+            },
+            {
+              "description": "System action for restarting an application",
+              "type": "system",
+              "critical": false,
+              "runbook": {
+                "task_definition_list": [
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [
+                      {
+                        "kind": "app_task",
+                        "name": "RestartGraylog"
+                      }
+                    ],
+                    "name": "7e8593b8_dag",
+                    "attrs": {
+                      "edges": [],
+                      "type": ""
+                    },
+                    "timeout_secs": "0",
+                    "type": "DAG",
+                    "variable_list": []
+                  },
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [],
+                    "name": "RestartGraylog",
+                    "attrs": {
+                      "exit_status": [],
+                      "script": "#!/bin/bash\nsudo systemctl start graylog-server\n",
+                      "script_type": "sh",
+                      "type": "",
+                      "command_line_args": "",
+                      "login_credential_local_reference": {
+                        "kind": "app_credential",
+                        "name": "CENTOS"
+                      }
+                    },
+                    "timeout_secs": "0",
+                    "type": "EXEC",
+                    "variable_list": []
+                  }
+                ],
+                "description": "",
+                "name": "c5905dbf_runbook",
+                "main_task_local_reference": {
+                  "kind": "app_task",
+                  "name": "7e8593b8_dag"
+                },
+                "variable_list": []
+              },
+              "name": "action_restart"
+            },
+            {
+              "description": "",
+              "type": "user",
+              "critical": false,
+              "runbook": {
+                "task_definition_list": [
+                  {
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [
+                      {
+                        "kind": "app_task",
+                        "name": "Install and Configure"
+                      }
+                    ],
+                    "name": "7b4c83ef_dag",
+                    "attrs": {
+                      "edges": [],
+                      "type": ""
+                    },
+                    "timeout_secs": "0",
+                    "type": "DAG",
+                    "variable_list": []
+                  },
+                  {
+                    "target_any_local_reference": {
+                      "kind": "app_service",
+                      "name": "GrayLog"
+                    },
+                    "retries": "0",
+                    "description": "",
+                    "child_tasks_local_reference_list": [],
+                    "name": "Install and Configure",
+                    "attrs": {
+                      "exit_status": [],
+                      "script": "#!/bin/bash\n\nset -ex\n\n## Initialize Variables\nADMIN_PASSWORD=\"@@{ADMIN_PASSWORD}@@\"\nADMIN_EMAIL=\"@@{ADMIN_EMAIL}@@\"\nVM_IP=\"@@{address}@@\"\n\nsudo hostnamectl set-hostname --static graylog\n\nsudo yum update -y\nsudo setenforce 0\n\n## Install Java\nsudo yum -y install epel-release\nsudo yum install -y java-1.8.0-openjdk-headless.x86_64\nsudo yum -y install pwgen\n\n## Install mongo\necho '[mongodb-org-3.6]\nname=MongoDB Repository\nbaseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/\ngpgcheck=1\nenabled=1\ngpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc' | sudo tee -a /etc/yum.repos.d/mongodb-org-3.6.repo\nsudo yum install -y mongodb-org\nsudo systemctl start mongod\nsudo systemctl enable mongod\n\n## Install and configure elastic search\nsudo rpm --import https://packages.elastic.co/GPG-KEY-elasticsearch\necho '[elasticsearch]\nname=Elasticsearch repository\nbaseurl=https://packages.elastic.co/elasticsearch/2.x/centos\ngpgcheck=1\ngpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch\nenabled=1' | sudo tee -a /etc/yum.repos.d/elasticsearch.repo\n\nsudo yum -y install elasticsearch\n\nsudo sed -i '/cluster.name/s/^#//' /etc/elasticsearch/elasticsearch.yml\nsudo sed -i '/cluster.name/s/my-application/graylog/' /etc/elasticsearch/elasticsearch.yml\n\nsudo systemctl enable elasticsearch\nsudo systemctl start elasticsearch\n\nsleep 15\n\n## Verify elastic search \nsudo curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'\n\n\n## Install graylog\nsudo rpm -Uvh https://packages.graylog2.org/repo/packages/graylog-2.5-repository_latest.rpm\nsudo yum -y install graylog-server\n\n## Configure graylog conf\nsudo sed -i '/password_secret/s/^/#/' /etc/graylog/server/server.conf\nsudo sed -i '/root_password_sha2/s/^/#/' /etc/graylog/server/server.conf\nsudo sed -i '/elasticsearch_shards/s/^/#/' /etc/graylog/server/server.conf\n\npwd_secret=$(sudo pwgen -N 1 -s 96)\nroot_pwd=$(echo -n ${ADMIN_PASSWORD} | sha256sum | awk '{print $1}')\n\n\necho \"password_secret=$pwd_secret\nroot_password_sha2=$root_pwd\nroot_email=${ADMIN_EMAIL}\nroot_timezone=UTC\nelasticsearch_discovery_zen_ping_unicast_hosts = ${VM_IP}:9300\nelasticsearch_shards=1\nscript.inline: false\nscript.indexed: false\nscript.file: false\" | sudo tee -a /etc/graylog/server/server.conf\n\n\n\nsudo sed -i '/web_listen_uri/s/^#//' /etc/graylog/server/server.conf\n\nsudo sed -i \"/rest_listen_uri/s/127.0.0.1/${VM_IP}/\" /etc/graylog/server/server.conf\nsudo sed -i \"/web_listen_uri/s/127.0.0.1/${VM_IP}/\" /etc/graylog/server/server.conf\n\n\n## Start graylog service\nsudo systemctl enable graylog-server\nsudo systemctl start graylog-server\nsudo systemctl status graylog-server\n\n\n",
+                      "script_type": "sh",
+                      "type": "",
+                      "command_line_args": "",
+                      "login_credential_local_reference": {
+                        "kind": "app_credential",
+                        "name": "CENTOS"
+                      }
+                    },
+                    "timeout_secs": "0",
+                    "type": "EXEC",
+                    "variable_list": []
+                  }
+                ],
+                "description": "",
+                "name": "b1e9c7a1_runbook",
+                "main_task_local_reference": {
+                  "kind": "app_task",
+                  "name": "7b4c83ef_dag"
+                },
+                "variable_list": []
+              },
+              "name": "Package Install"
+            }
+          ],
+          "depends_on_list": [],
+          "name": "GrayLog",
+          "port_list": [],
+          "tier": "",
+          "variable_list": [],
+          "description": ""
+        }
+      ],
+      "substrate_definition_list": [
+        {
+          "description": "",
+          "action_list": [],
+          "type": "AHV_VM",
+          "name": "GrayLogAHVVM",
+          "readiness_probe": {
+            "connection_type": "SSH",
+            "retries": "5",
+            "connection_protocol": "",
+            "connection_port": 22,
+            "address": "@@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@",
+            "delay_secs": "0",
+            "disable_readiness_probe": false,
+            "login_credential_local_reference": {
+              "kind": "app_credential",
+              "name": "CENTOS"
+            }
+          },
+          "editables": {
+            "readiness_probe": {
+              "connection_type": true,
+              "retries": true,
+              "delay_secs": true,
+              "connection_port": true,
+              "timeout_secs": true
+            },
+            "create_spec": {
+              "categories": true,
+              "name": true,
+              "resources": {
+                "nic_list": {
+                  "0": {
+                    "subnet_reference": true
+                  }
+                },
+                "serial_port_list": {},
+                "num_vcpus_per_socket": true,
+                "num_sockets": true,
+                "memory_size_mib": true,
+                "boot_config": true,
+                "guest_customization": true,
+                "disk_list": true
+              }
+            }
+          },
+          "os_type": "Linux",
+          "create_spec": {
+            "name": "graylog-@@{calm_time}@@",
+            "resources": {
+              "nic_list": [
+                {
+                  "nic_type": "NORMAL_NIC",
+                  "ip_endpoint_list": [],
+                  "network_function_chain_reference": null,
+                  "network_function_nic_type": "INGRESS",
+                  "mac_address": "",
+                  "subnet_reference": {
+                    "kind": "subnet",
+                    "type": "",
+                    "name": "",
+                    "uuid": "1ea44311-6fe2-43f2-bcf2-7032944e4212"
+                  },
+                  "type": ""
+                }
+              ],
+              "serial_port_list": [],
+              "guest_tools": null,
+              "num_vcpus_per_socket": 2,
+              "num_sockets": 1,
+              "gpu_list": [],
+              "memory_size_mib": 4096,
+              "parent_reference": null,
+              "hardware_clock_timezone": "",
+              "guest_customization": {
+                "cloud_init": {
+                  "meta_data": "",
+                  "type": "",
+                  "user_data": "#cloud-config\nusers:\n  - name: centos\n    ssh-authorized-keys:\n      - @@{CENTOS.public_key}@@\n    sudo: ['ALL=(ALL) NOPASSWD:ALL']"
+                },
+                "type": "",
+                "sysprep": null
+              },
+              "power_state": "ON",
+              "type": "",
+              "account_uuid": "ec4e3f20-e33f-4463-8c71-cbf328c2d140",
+              "boot_config": {
+                "boot_device": {
+                  "type": "",
+                  "disk_address": {
+                    "type": "",
+                    "device_index": 0,
+                    "adapter_type": "SCSI"
+                  }
+                },
+                "type": "",
+                "boot_type": "",
+                "mac_address": ""
+              },
+              "disk_list": [
+                {
+                  "data_source_reference": {
+                    "kind": "app_package",
+                    "type": "",
+                    "name": "AHV_CENTOS_77",
+                    "uuid": "c9ed9fe7-1557-4c44-979d-4c92e14e12b0"
+                  },
+                  "type": "",
+                  "disk_size_mib": 0,
+                  "volume_group_reference": null,
+                  "device_properties": {
+                    "type": "",
+                    "disk_address": {
+                      "type": "",
+                      "device_index": 0,
+                      "adapter_type": "SCSI"
+                    },
+                    "device_type": "DISK"
+                  }
+                }
+              ]
+            },
+            "availability_zone_reference": null,
+            "backup_policy": null,
+            "type": "",
+            "cluster_reference": null,
+            "categories": ""
+          },
+          "variable_list": []
+        }
+      ],
+      "credential_definition_list": [
+        {
+          "username": "centos",
+          "description": "",
+          "type": "KEY",
+          "secret": {
+            "attrs": {
+              "is_secret_modified": true,
+              "secret_reference": {}
+            },
+            "value": "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:utf-8"
+          },
+          "name": "CENTOS",
+          "editables": {
+            "username": true,
+            "secret": true
+          }
+        }
+      ],
+      "package_definition_list": [
+        {
+          "description": "",
+          "action_list": [],
+          "type": "DEB",
+          "service_local_reference_list": [
+            {
+              "kind": "app_service",
+              "name": "GrayLog"
+            }
+          ],
+          "name": "InstallAHVGrayLog",
+          "version": "",
+          "options": {
+            "install_runbook": {
+              "task_definition_list": [
+                {
+                  "target_any_local_reference": {
+                    "kind": "app_package",
+                    "name": "InstallAHVGrayLog"
+                  },
+                  "retries": "0",
+                  "description": "",
+                  "child_tasks_local_reference_list": [
+                    {
+                      "kind": "app_task",
+                      "name": "Package Install"
+                    }
+                  ],
+                  "name": "d941afcc_dag",
+                  "attrs": {
+                    "edges": [],
+                    "type": ""
+                  },
+                  "timeout_secs": "0",
+                  "type": "DAG",
+                  "variable_list": []
+                },
+                {
+                  "target_any_local_reference": {
+                    "kind": "app_service",
+                    "name": "GrayLog"
+                  },
+                  "retries": "0",
+                  "description": "",
+                  "child_tasks_local_reference_list": [],
+                  "name": "Package Install",
+                  "attrs": {
+                    "type": "CALL_RUNBOOK",
+                    "inarg_list": [],
+                    "runbook_reference": {
+                      "kind": "app_runbook",
+                      "name": "b1e9c7a1_runbook"
+                    }
+                  },
+                  "timeout_secs": "0",
+                  "type": "CALL_RUNBOOK",
+                  "variable_list": []
+                }
+              ],
+              "description": "",
+              "name": "7d894f86_runbook",
+              "main_task_local_reference": {
+                "kind": "app_task",
+                "name": "d941afcc_dag"
+              },
+              "variable_list": []
+            },
+            "type": "",
+            "uninstall_runbook": {
+              "task_definition_list": [
+                {
+                  "target_any_local_reference": {
+                    "kind": "app_package",
+                    "name": "InstallAHVGrayLog"
+                  },
+                  "retries": "0",
+                  "description": "",
+                  "child_tasks_local_reference_list": [],
+                  "name": "810fef15_dag",
+                  "attrs": {
+                    "edges": [],
+                    "type": ""
+                  },
+                  "timeout_secs": "0",
+                  "type": "DAG",
+                  "variable_list": []
+                }
+              ],
+              "description": "",
+              "name": "96a738c3_runbook",
+              "main_task_local_reference": {
+                "kind": "app_task",
+                "name": "810fef15_dag"
+              },
+              "variable_list": []
+            }
+          },
+          "variable_list": []
+        },
+        {
+          "description": "Centos 7 image downloaded for graylog",
+          "action_list": [],
+          "type": "SUBSTRATE_IMAGE",
+          "service_local_reference_list": [],
+          "name": "AHV_CENTOS_77",
+          "version": "",
+          "options": {
+            "type": "",
+            "name": "CENTOS_77",
+            "resources": {
+              "image_type": "DISK_IMAGE",
+              "checksum": {
+                "checksum_algorithm": "",
+                "type": "",
+                "checksum_value": ""
+              },
+              "source_uri": "http://download.nutanix.com/Calm/CentOS-7-x86_64-1908.qcow2",
+              "version": {
+                "product_version": "",
+                "type": "",
+                "product_name": ""
+              },
+              "architecture": "X86_64",
+              "type": ""
+            },
+            "description": ""
+          },
+          "variable_list": []
+        },
+        {
+          "description": "Centos OVA image for vmware blueprints",
+          "action_list": [],
+          "type": "SUBSTRATE_IMAGE",
+          "service_local_reference_list": [],
+          "name": "ESX_CENTOS_77",
+          "version": "",
+          "options": {
+            "type": "",
+            "name": "CENTOS_77",
+            "resources": {
+              "image_type": "DISK_IMAGE",
+              "checksum": {
+                "checksum_algorithm": "",
+                "type": "",
+                "checksum_value": ""
+              },
+              "source_uri": "http://download.nutanix.com/Calm/CentOS-7-x86_64-1908.ova",
+              "version": {
+                "product_version": "",
+                "type": "",
+                "product_name": ""
+              },
+              "architecture": "X86_64",
+              "type": ""
+            },
+            "description": ""
+          },
+          "variable_list": []
+        }
+      ],
+      "app_profile_list": [
+        {
+          "deployment_create_list": [
+            {
+              "type": "GREENFIELD",
+              "action_list": [],
+              "name": "d50c04ab_deployment",
+              "min_replicas": "1",
+              "default_replicas": "1",
+              "depends_on_list": [],
+              "editables": {
+                "max_replicas": true
+              },
+              "published_service_local_reference_list": [],
+              "max_replicas": "1",
+              "package_local_reference_list": [
+                {
+                  "kind": "app_package",
+                  "name": "InstallAHVGrayLog"
+                }
+              ],
+              "substrate_local_reference": {
+                "kind": "app_substrate",
+                "name": "GrayLogAHVVM"
+              },
+              "variable_list": [],
+              "description": ""
+            }
+          ],
+          "description": "",
+          "action_list": [],
+          "name": "Nutanix",
+          "variable_list": [
+            {
+              "val_type": "STRING",
+              "is_mandatory": false,
+              "description": "",
+              "data_type": "BASE",
+              "type": "LOCAL",
+              "name": "ADMIN_PASSWORD",
+              "value": "nutanix/4u",
+              "label": "",
+              "attrs": {
+                "type": "LOCAL"
+              },
+              "is_hidden": false
+            },
+            {
+              "val_type": "STRING",
+              "is_mandatory": false,
+              "description": "",
+              "data_type": "BASE",
+              "type": "LOCAL",
+              "name": "ADMIN_EMAIL",
+              "value": "graylog@nutanix.com",
+              "label": "",
+              "attrs": {
+                "type": ""
+              },
+              "editables": {
+                "value": true
+              },
+              "is_hidden": false
+            }
+          ]
+        }
+      ],
+      "published_service_definition_list": [],
+      "default_credential_local_reference": {
+        "kind": "app_credential",
+        "name": "CENTOS"
+      },
+      "type": "USER"
+    },
+    "name": "Graylog1"
+  },
+  "api_version": "3.0",
+  "metadata": {
+    "last_update_time": "1610935319657506",
+    "kind": "blueprint",
+    "spec_version": 6,
+    "creation_time": "1610930127524662",
+    "categories": {
+      "AppFamily": "DevOps"
+    },
+    "name": "Graylog1"
+  }
+}
