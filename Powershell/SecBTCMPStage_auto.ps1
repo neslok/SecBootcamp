@@ -30,7 +30,7 @@ foreach ($c in $clusterdeets) {
   $PJlist = Invoke-RestMethod -SkipCertificateCheck $BaseURL'projects/list' -Method 'POST' -Headers $headers -Body $body
 
   foreach ($p in $PJlist.entities) {
-    if ($p.spec.name -eq "BootcampInfra") { #Specifies which project the blueprints/applications will be allocated to
+    if ($p.spec.name -eq "KOtest") { #Specifies which project the blueprints/applications will be allocated to
       #write-host $p.spec.name
       #write-host $p.metadata.uuid
       #write-host "Subnet UUID: "$p.spec.resources[0].subnet_reference_list.uuid
@@ -45,7 +45,7 @@ foreach ($c in $clusterdeets) {
   $IMGlist = Invoke-RestMethod -SkipCertificateCheck $BaseURL'images/list' -Method 'POST' -Headers $headers -Body $body
 
   foreach ($i in $IMGlist.entities) {
-    if ($i.spec.name -eq "WinToolsVM.qcow2") {
+    if ($i.spec.name -eq "WinToolsVM-Q1CY21.qcow2") {
       #write-host $i.spec.name
       #write-host "Image UUID: "$i.metadata.uuid
       $IMGuuid = $i.metadata.uuid

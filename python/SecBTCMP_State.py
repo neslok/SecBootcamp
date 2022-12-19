@@ -1,4 +1,4 @@
-import requests
+from requests import request
 import json
 from http.client import HTTPSConnection
 from base64 import b64encode
@@ -16,7 +16,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # #prisCentIP = '10.38.3.73'
 # prisCentIP = input("Enter Prism Central IP: ")
 
-clusterdeets = '/Users/keith.olsen/Downloads/clusters.csv' # Path to csv file with cluster info
+clusterdeets = '/Users/keith.olsen/Documents/GitHub/SecBootcamp/clusters.csv' # Path to csv file with cluster info
 
 # Reads in cluster details from csv file
 
@@ -60,10 +60,10 @@ with open(clusterdeets) as csvfile:
 
         json_APPpayload = json.dumps(APPpayload)
 
-        APPlist = requests.request("POST", baseurl + "apps/list", headers=headers, data=json_APPpayload, verify=False).json()
+        APPlist = request("POST", baseurl + "apps/list", headers=headers, data=json_APPpayload, verify=False).json()
         json_APPlist = json.dumps(APPlist)
 
-        #print(json_APPlist)
+        print(json_APPlist)
 
         #print(APPlist)
         print()

@@ -602,7 +602,7 @@
                     "kind": "subnet",
                     "type": "",
                     "name": "",
-                    "uuid": "1ea44311-6fe2-43f2-bcf2-7032944e4212"
+                    "uuid": "b59630be-9890-4cd7-8380-33a498a72aa8"
                   },
                   "type": ""
                 }
@@ -638,7 +638,7 @@
                     "kind": "image",
                     "type": "",
                     "name": "WinToolsVM.qcow2",
-                    "uuid": "e25c22fe-627f-42d4-b8cf-283b8f9fa9e1"
+                    "uuid": ""
                   },
                   "type": "",
                   "disk_size_mib": 0,
@@ -700,7 +700,7 @@
                     "kind": "subnet",
                     "type": "",
                     "name": "",
-                    "uuid": "1ea44311-6fe2-43f2-bcf2-7032944e4212"
+                    "uuid": "b59630be-9890-4cd7-8380-33a498a72aa8"
                   },
                   "type": ""
                 }
@@ -736,7 +736,7 @@
                     "kind": "image",
                     "type": "",
                     "name": "WinToolsVM.qcow2",
-                    "uuid": "e25c22fe-627f-42d4-b8cf-283b8f9fa9e1"
+                    "uuid": ""
                   },
                   "type": "",
                   "disk_size_mib": 0,
@@ -798,7 +798,7 @@
                     "kind": "subnet",
                     "type": "",
                     "name": "",
-                    "uuid": "1ea44311-6fe2-43f2-bcf2-7032944e4212"
+                    "uuid": "b59630be-9890-4cd7-8380-33a498a72aa8"
                   },
                   "type": ""
                 }
@@ -834,7 +834,7 @@
                     "kind": "image",
                     "type": "",
                     "name": "WinToolsVM.qcow2",
-                    "uuid": "e25c22fe-627f-42d4-b8cf-283b8f9fa9e1"
+                    "uuid": ""
                   },
                   "type": "",
                   "disk_size_mib": 0,

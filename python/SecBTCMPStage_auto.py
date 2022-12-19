@@ -10,8 +10,8 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # define path to local files (blueprints and cluster(s) details) - Update these for your local system accordingly.
 ##################################################################################################################
-clusterdeets = '/Users/keith.olsen/Downloads/clusters.csv'   # CSV sheet with cluster IP, login, and password
-BPpath = '/Users/keith.olsen/Downloads/' # Directory where BP json files are located
+clusterdeets = '/Users/keith.olsen/Documents/GitHub/SecBootcamp/clusters.csv'   # CSV sheet with cluster IP, login, and password
+BPpath = '/Users/keith.olsen/Documents/GitHub/SecBootcamp/' # Directory where BP json files are located
 blueprints = ["Fiesta1", "Graylog1", "SecClients"]
 ##################################################################################################################
 
@@ -76,7 +76,7 @@ with open(clusterdeets) as csvfile:
         json_IMGlist = json.dumps(IMGlist)
 
         for each in IMGlist['entities']:
-            if (each['status']['name']) == "WinToolsVM.qcow2":
+            if (each['status']['name']) == "WinToolsVM-Q1CY21.qcow2":
                 IMGUuid = (each['metadata']['uuid'])
 
         # Replaces UUIDs in supplied blueprints with UUIDs from cluster
